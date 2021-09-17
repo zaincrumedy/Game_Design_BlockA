@@ -2,7 +2,7 @@
 # 09/07/21
 #  We are going to learn how to use a loop
 
- star=int(input("How many stars? "))
+star=int(input("How many stars? "))
  line=star
  stars2 = star
  space=0
@@ -20,4 +20,5 @@
          #print(counter+1, end=" ")
      print() #print a return creating a new line
      stars2 +=1 #shortcut for star=star-1
- print("Thank you")
+
+     print("Thank you")
