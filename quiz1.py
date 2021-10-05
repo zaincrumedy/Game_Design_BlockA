@@ -1,6 +1,6 @@
 #Zain Crumedy
 #October 5 2021
-#Quiz codes
+#Quiz code
 
 
 #question 1
