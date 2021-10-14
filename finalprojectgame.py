@@ -6,13 +6,13 @@ import os
 import random 
 os.system('cls')
 
-def updateWord(randWord,guesses):
+def updateWord(randWord,guesses):#the spaces for the word function
     for letter in randWord:
         if letter in guesses:
             print (letter,end=" ")
         else:
             print("_",end=" ")
-
+#menu
 def menu():
     print("____________________________________________________")
     print("|    This is a guessing game! Choose a category!   |")
@@ -39,7 +39,7 @@ def menu():
         sel=input("What would you like to play? ")
         check = False
         
-def selWord(sel):
+def selWord(sel):#random word selection functions
     if sel == 1:
         randWord = random.choice(animals)
     if sel == 2:
@@ -54,11 +54,11 @@ fruits = ["peach","apple","orange","grape","cherry","watermelon","banana","straw
 
 name = input("What is your name? ")
 maxScore = 0
-sel = menu()
+sel = menu()#menu function
 game = "y"
 while sel!=4 and ("Y" and "y" in game):
     randWord = selWord(sel)
-    randWord = randWord.lower()
+    randWord = randWord.lower()#making the input word lowercase
     wordCount = len(randWord)
     turns = len(randWord) + 3
     print("Good Luck ",name,"! You have ", turns," lives")
@@ -70,19 +70,19 @@ while sel!=4 and ("Y" and "y" in game):
     while turns > 0 and letCount<wordCount:
         letCount = 0
         print()
-        newGuess = input("Guess a letter: ")
+        newGuess = input("Guess a letter: ")#guessing part
         newguess = newGuess.lower()
         if newGuess in randWord:
             guesses+=newGuess
             print("Correct! Keep guessing!")
         else:
-            turns -= 1
+            turns -= 1#subtracting the turns
             print("That is not in the word. You have ", turns, " trys left")
         for letter in randWord:
             if letter in guesses:
                 print (letter,end=" ")
                 letCount+=1
-            else:
+            else:#the spaces for the words again
                 print("_",end=" ")
 
     if turns == 0:
@@ -92,7 +92,7 @@ while sel!=4 and ("Y" and "y" in game):
         print("You win!")
     os.system('cls')
     score = 3*wordCount+5*turns
-    if score>maxScore:
+    if score>maxScore:#total score function
         maxScore = score
     print (maxScore)
     game = input("Do you want to play again? Type Y for yes or N for no: ")
