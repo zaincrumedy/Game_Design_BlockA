@@ -24,13 +24,13 @@ while run:
         if eve.type == py.QUIT:
             run=False
             py.quit()
-    display_message("people")
+    display_message("words")
     py.time.delay(300)
     win.fill((0,0,0))
-    display_message("in my")
+    display_message("words")
     py.time.delay(700)
     win.fill((0,0,0))
-    display_message("anus")
+    display_message("words")
     py.time.delay(500)
     win.fill((0,0,0))
 py.quit()
