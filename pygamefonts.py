@@ -8,11 +8,13 @@ WHITE=(0,0,0)
 PURPLE=(150,0,150)
 WIDTH = 800
 HEIGHT = 800
-messages=['Start Game','Screen Size','Background Colors','Object color','Sound On/Off']
+messages=['Instructions','Level 1','Level 2','Settings','Score Board', 'Exit']
+messages2=['Screen size', 'Object Color', 'Sound on/off']
+Ssmessages=['Larger', 'Smaller']
 win=py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption("Setting Window")
 #TITLE_FONT= py.font.SysFont(name,size,bold=false, italic= false)
-TITLE_FONT= py.font.SysFont('comicsans', 30, italic=True)
+TITLE_FONT= py.font.SysFont('comicsans', 50, italic=True)
 SUBTITLE_FONT= py.font.SysFont('comicsans', 30, italic=True)
 xbox=25
 wbox=25
@@ -20,7 +22,7 @@ square=py.Rect(10,10, wbox, xbox)
 
 def display_message(message):
     py.time.delay(100)
-    text=TITLE_FONT.render(message,1, BLACK )
+    text=TITLE_FONT.render(message,30, BLACK )
     win.blit(text, (WIDTH/2-text.get_width()/2, 30) )
     py.display.update()
     py.time.delay(10)
@@ -41,15 +43,17 @@ def display_Menu():
     for i in range(0, len(messages)):
         word= messages[i]
         py.draw.rect(win, PURPLE, square)
-        text=TITLE_FONT.render(word,10, BLACK)
+        text=SUBTITLE_FONT.render(word,10, BLACK)
         win.blit(text, (x+wbox+10, y))
         py.display.flip()
         py.time.delay(100)
         y += 100
         square.y=y
+        py.display.set_caption("Menu Window")
 
 win.fill(WHITE)
-display_message('Settings')
+display_message('Menu')
+ysub=200
 py.time.delay(200)
 display_Menu()
 run=True
@@ -59,26 +63,66 @@ while run:
             run=False
     if eve.type==py.MOUSEBUTTONDOWN:
         mouse_pressed=py.mouse.get_pressed()
-        if mouse_pos[0]>=70 and mouse_pos[0]<=230 and mouse_pos[1] >=190 and mouse_pos
-        win.fill(WHITE)
-        display_Title("Screen Size", WIDTH/2-text)
+        if mouse_pressed[0]:
             mouse_pos=py.mouse.get_pos()
+            if mouse_pos[0]>=80 and mouse_pos[0]<=500:
+                win.fill(WHITE)
+                display_message("Settings")
+                py.display.set_caption("Setting Window")
+                mouse_pos=py.mouse.get_pos()
+                x=70
+                y=190
+                square.x=x
+                square.y=y
+                for i in range(0, len(messages2)):
+                    word= messages2[i]
+                    py.draw.rect(win, PURPLE, square)
+                    text=SUBTITLE_FONT.render(word,10, BLACK)
+                    win.blit(text, (x+wbox+10, y))
+                    py.display.flip()
+                    py.time.delay(100)
+                    y += 100
+                    square.y=y
+            
+            if mouse_pos[1]>80 and mouse_pos[1]<=200:
+                win.fill(WHITE)
+                display_message('Screen Size')
+                py.display.set_caption("Screen Size Window")
+                x=70
+                y=190
+                square.x=x
+                square.y=y
+                for i in range(0, len(Ssmessages)):
+                    word= Ssmessages[i]
+                    py.draw.rect(win, PURPLE, square)
+                    text=SUBTITLE_FONT.render(word,10, BLACK)
+                    win.blit(text, (x+wbox+10, y))
+                    py.display.flip()
+                    py.time.delay(100)
+                    y += 100
+                    square.y=y
+            
+            
+                
 
-            if py.Rect.collidepoint(square, mouse_pressed):
-                win.fill
-    # display_message("Start Game")
-    # ysub=200
-    # py.time.delay(300)
-    # displaySub("Screen Size", ysub)
-    # ysub+=125
-    # displaySub("Background Colors", ysub)
-    # py.time.delay(100)
-    # ysub+=125
-    # displaySub("Object color", ysub)
-    # py.time.delay(100)
-    # ysub+=125
-    # displaySub("Sound On/Off", ysub)
-
-    print(py.mouse.get_pos())
-    
-py.quit()
+            
+                
+                
+                
+                
+                
+                
+            # if py.Rect.collidepoint(square, mouse_pressed):
+            #     win.fill
+            # display_message("Start Game")
+            # ysub=200
+            # py.time.delay(300)
+            # displaySub("Screen Size", ysub)
+            # ysub+=125
+            # displaySub("Background Colors", ysub)
+            # py.time.delay(100)
+            # ysub+=125
+            # displaySub("Object color", ysub)
+            # py.time.delay(100)
+            # ysub+=125
+            # displaySub("Sound On/Off", ysub)
