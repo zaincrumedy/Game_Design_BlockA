@@ -9,8 +9,8 @@ PURPLE=(150,0,150)
 WIDTH = 800
 HEIGHT = 800
 messages=['Instructions','Level 1','Level 2','Settings','Score Board', 'Exit']
-messages2=['Screen size', 'Object Color', 'Sound on/off']
-Ssmessages=['Larger', 'Smaller']
+messages2=['Screen size', 'Object Color', 'Sound on/off', 'Back']
+Ssmessages=['Larger', 'Smaller', 'Back']
 win=py.display.set_mode((WIDTH,HEIGHT))
 py.display.set_caption("Setting Window")
 #TITLE_FONT= py.font.SysFont(name,size,bold=false, italic= false)
@@ -57,19 +57,23 @@ ysub=200
 py.time.delay(200)
 display_Menu()
 run=True
+
 while run:
     for eve in py.event.get():
         if eve.type == py.QUIT:
             run=False
+
     if eve.type==py.MOUSEBUTTONDOWN:
         mouse_pressed=py.mouse.get_pressed()
         if mouse_pressed[0]:
             mouse_pos=py.mouse.get_pos()
-            if mouse_pos[0]>=80 and mouse_pos[0]<=500:
+            print(mouse_pos)
+            if mouse_pos[0]>=70 and mouse_pos[0]<=95 and mouse_pos[1]>490 and mouse_pos[1]<515:
                 win.fill(WHITE)
                 display_message("Settings")
                 py.display.set_caption("Setting Window")
                 mouse_pos=py.mouse.get_pos()
+                
                 x=70
                 y=190
                 square.x=x
@@ -84,7 +88,7 @@ while run:
                     y += 100
                     square.y=y
             
-            if mouse_pos[1]>80 and mouse_pos[1]<=200:
+            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>185 and mouse_pos[1]<=215:
                 win.fill(WHITE)
                 display_message('Screen Size')
                 py.display.set_caption("Screen Size Window")
