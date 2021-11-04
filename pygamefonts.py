@@ -57,7 +57,7 @@ def display_Menu():
     y=190
     square.x=x
     square.y=y
-    
+    counter=1
     for i in range(0, len(messages)):
         word= messages[i]
         py.draw.rect(win, PURPLE, square)
@@ -178,25 +178,76 @@ while run:
                     y += 100
                     square.y=y
                 display_back()
-                
+                counter+=1
+                back+=1
 
-            if mouse_pos[0]>660 and mouse_pos[0]<=685 and mouse_pos[1]>730 and mouse_pos[1]<=755 and back>1:
+
+            if mouse_pos[0]>660 and mouse_pos[0]<=685 and mouse_pos[1]>730 and mouse_pos[1]<=755 and back==2:
                 win.fill(WHITE)
                 display_message('Menu')
-                counter-=1
+                counter-=2
                 back-=1
                 display_Menu()
-              
-                    
-                            
+
+
+
+
+            if mouse_pos[0]>660 and mouse_pos[0]<=685 and mouse_pos[1]>730 and mouse_pos[1]<=755 and back==3:
+                win.fill(WHITE)
                 
+                counter-=1
+                back-=1
+                win.fill(WHITE)
+                display_message("Settings")
+                py.display.set_caption("Setting Window")
+                mouse_pos=py.mouse.get_pos()
+                counter +=2
+                back-=1
+                x=70
+                y=190
+                square.x=x
+                square.y=y
+                for i in range(0, len(messages2)):
+                    word= messages2[i]
+                    py.draw.rect(win, PURPLE, square)
+                    text=SUBTITLE_FONT.render(word,10, BLACK)
+                    win.blit(text, (x+wbox+10, y))
+                    py.display.flip()
+                    py.time.delay(100)
+                    y += 100
+                    square.y=y
+                back+=1
+                x=660
+                y=730
+                square.x=x
+                square.y=y
+                for i in range(0,len(bmessages)):
+                    word= bmessages[i]
+                    py.draw.rect(win, PURPLE, square)
+                    text=SUBTITLE_FONT.render(word,10, BLACK)
+                    win.blit(text, (x+wbox+10, y))
+                    py.display.flip()
+                    
+                    
+                    square.y=y    
+                
+            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>190 and mouse_pos[1]<=215 and counter==4:
+                WIDTH+=50
+                HEIGHT+=50
+                win=py.display.set_mode((WIDTH,HEIGHT))   
+                display_back
+            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>290 and mouse_pos[1]<315 and counter==4:
+                WIDTH-=50
+                HEIGHT-=50
+                win=py.display.set_mode((WIDTH,HEIGHT))   
+                display_back
             
                
           
                     
                             
                                 
-
+            print(WIDTH)
             print(counter)
             print(back)
 
