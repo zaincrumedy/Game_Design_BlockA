@@ -51,12 +51,13 @@ def display_back():
                     
                     square.y=y
 
-
+counter=1
 def display_Menu():
     x=70
     y=190
     square.x=x
     square.y=y
+    
     for i in range(0, len(messages)):
         word= messages[i]
         py.draw.rect(win, PURPLE, square)
@@ -73,7 +74,7 @@ display_message('Menu')
 ysub=200
 py.time.delay(200)
 display_Menu()
-display_back()
+
 run=True
 counter=1
 back=1
@@ -93,7 +94,7 @@ while run:
                 display_message("Settings")
                 py.display.set_caption("Setting Window")
                 mouse_pos=py.mouse.get_pos()
-                counter +=1
+                counter +=2
                 
                 x=70
                 y=190
@@ -108,13 +109,13 @@ while run:
                     py.time.delay(100)
                     y += 100
                     square.y=y
-
+                back+=1
                 x=660
                 y=730
                 square.x=x
                 square.y=y
-                for i in range(0,len(back)):
-                    word= back[i]
+                for i in range(0,len(bmessages)):
+                    word= bmessages[i]
                     py.draw.rect(win, PURPLE, square)
                     text=SUBTITLE_FONT.render(word,10, BLACK)
                     win.blit(text, (x+wbox+10, y))
@@ -141,9 +142,25 @@ while run:
                     py.time.delay(100)
                     y += 100
                     square.y=y
+                
+                back+=1
+                counter+=1
+                x=660
+                y=730
+                square.x=x
+                square.y=y
+                for i in range(0,len(bmessages)):
+                    word= bmessages[i]
+                    py.draw.rect(win, PURPLE, square)
+                    text=SUBTITLE_FONT.render(word,10, BLACK)
+                    win.blit(text, (x+wbox+10, y))
+                    py.display.flip()
+                    
+                    
+                    square.y=y
+
             
-            
-            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>185 and mouse_pos[1]<=215 and counter==2:
+            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>185 and mouse_pos[1]<=215 and counter==3:
                 win.fill(WHITE)
                 display_message('Screen Size')
                 py.display.set_caption("Screen Size Window")
@@ -160,8 +177,15 @@ while run:
                     py.time.delay(100)
                     y += 100
                     square.y=y
+                display_back()
+                
 
-            
+            if mouse_pos[0]>660 and mouse_pos[0]<=685 and mouse_pos[1]>730 and mouse_pos[1]<=755 and back>1:
+                win.fill(WHITE)
+                display_message('Menu')
+                counter-=1
+                back-=1
+                display_Menu()
               
                     
                             
