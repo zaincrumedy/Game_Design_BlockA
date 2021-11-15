@@ -51,6 +51,8 @@ pygame.display.flip()
 run=True
 
 #main loop
+Jumping=False
+jumpCount=10
 while run:
     pygame.time.delay(10)
     for case in pygame.event.get():
@@ -102,6 +104,6 @@ while run:
         y=random.randrange(0,height)
         rect=pygame.Rect(x,y,wbox,hbox)
     pygame.draw.rect(window, colors.get('purple'), rect)
-    pygame.draw.circle(window, colors.get('blue'), (xc,yc), circle)
+    # pygame.draw.circle(window, colors.get('blue'), (xc,yc), circle)
     pygame.display.flip()
 pygame.quit()
