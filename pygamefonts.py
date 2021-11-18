@@ -21,6 +21,9 @@ SUBTITLE_FONT= py.font.SysFont('comicsans', 30, italic=True)
 xbox=25
 wbox=25
 square=py.Rect(10,10, wbox, xbox)
+clock=py.time.Clock()
+py.init()
+run = True
 
 def display_message(message):
     py.time.delay(100)
@@ -51,6 +54,15 @@ def display_back():
                     
                     square.y=y
 
+def level1_game():
+    bg=py.image.load("gameImages\\forest background.jpg")
+    clock.tick(27)
+    for event in py.event.get():
+            if event.type == py.QUIT:
+                run = False
+    win.blit(bg,(0,0))
+    py.display.update() 
+    #update score board
 counter=1
 def display_Menu():
     x=70
@@ -80,6 +92,7 @@ counter=1
 back=1
 while run:
     
+    clock.tick(27)
     for eve in py.event.get():
         if eve.type == py.QUIT:
             run=False
@@ -94,7 +107,7 @@ while run:
                 display_message("Settings")
                 py.display.set_caption("Setting Window")
                 mouse_pos=py.mouse.get_pos()
-                counter +=2
+                counter +=1
                 
                 x=70
                 y=190
@@ -160,7 +173,7 @@ while run:
                     square.y=y
 
             
-            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>185 and mouse_pos[1]<=215 and counter==3:
+            if mouse_pos[0]>70 and mouse_pos[0]<=95 and mouse_pos[1]>185 and mouse_pos[1]<=215 and counter==2:
                 win.fill(WHITE)
                 display_message('Screen Size')
                 py.display.set_caption("Screen Size Window")
@@ -185,10 +198,14 @@ while run:
             if mouse_pos[0]>660 and mouse_pos[0]<=685 and mouse_pos[1]>730 and mouse_pos[1]<=755 and back==2:
                 win.fill(WHITE)
                 display_message('Menu')
-                counter-=2
+                counter-=1
                 back-=1
                 display_Menu()
-
+            if mouse_pos[0]>=70 and mouse_pos[0]<=95 and mouse_pos[1]>290 and mouse_pos[1]<315 and counter==1:
+                level1_game()
+                display_back()
+                back+=1
+                counter+=1
 
 
 
@@ -201,7 +218,7 @@ while run:
                 display_message("Settings")
                 py.display.set_caption("Setting Window")
                 mouse_pos=py.mouse.get_pos()
-                counter +=2
+                counter +=1
                 back-=1
                 x=70
                 y=190
