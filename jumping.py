@@ -140,6 +140,7 @@ while run:
         if jumpCount >=-10:
             square.y -= jumpCount* abs(jumpCount)*0.5
             jumpCount-=1
+            
         else:
             jumpCount=10
             Jumping=False
